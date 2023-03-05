@@ -2,14 +2,17 @@ package Model;
 
 import java.util.Map;
 
-import Controller.ListToMap;
+/**
+ * @author 
+ * Madeline Castro 22743 
+ * Hoja de Trabajo #4 
+ * Propósito: Creacion de Factory para distintas implementaciones de Map
+ */
 
 
 public class MapFactory {
 
-    ListToMap mapselected = new ListToMap(); 
-
-    public Map getTypeMap(String ShopListpath, int userOp){
+    public Map getTypeMap(int userOp){
 
         Map typeMap = null;  
 

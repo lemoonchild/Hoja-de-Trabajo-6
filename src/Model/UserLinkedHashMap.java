@@ -5,6 +5,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author 
+ * Madeline Castro 22743 
+ * Hoja de Trabajo #4 
+ * Propósito: LinkedHashMap para Map
+ */
+
 public class UserLinkedHashMap implements Map {
 
     public LinkedHashMap<Object, Object> myLinkedHashMap; 

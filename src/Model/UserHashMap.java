@@ -5,6 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author 
+ * Madeline Castro 22743 
+ * Hoja de Trabajo #4 
+ * Propósito: HashMap para Map
+ */
+
 public class UserHashMap implements Map {
 
     public HashMap<Object, Object> myHashMap; 

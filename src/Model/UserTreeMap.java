@@ -5,6 +5,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+/**
+ * @author 
+ * Madeline Castro 22743 
+ * Hoja de Trabajo #4 
+ * Propósito: TreeMap para Map
+ */
+
 public class UserTreeMap implements Map {
    
     public TreeMap<Object, Object> myTreeMap; 

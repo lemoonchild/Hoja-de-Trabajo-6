@@ -1,10 +1,19 @@
 package View;
 
+import java.io.FileNotFoundException;
+import java.util.Map;
 import java.util.Scanner;
 
 import Controller.readFile;
 import Controller.toDoShop;
 import Model.MapFactory;
+
+/**
+ * @author 
+ * Madeline Castro 22743 
+ * Hoja de Trabajo #4 
+ * Propósito: Interfaz del usuario 
+ */
 
 public class UI {
     
@@ -13,7 +22,7 @@ public class UI {
     static MapFactory mapFactory = new MapFactory(); 
     static toDoShop toDo = new toDoShop();
     
-    public void menuCompra(){
+    public void menuCompra() throws FileNotFoundException{
 
         int statusShop = 1; 
 
@@ -27,7 +36,7 @@ public class UI {
 
         int type = sc.nextInt(); 
 
-        mapFactory.getTypeMap(shopList, type); 
+        readFile.readShopList(mapFactory.getTypeMap(type), shopList);
         
         while(statusShop == 1){
 
@@ -49,8 +58,7 @@ public class UI {
                     break; 
                 case 3:
                     System.out.println("¿Cómo desea ver la lista de compras?");
-                    System.out.println("\t1. Ver toda la lista");
-                    System.out.println("\t2. Ver la lista ordenada por tipo");
+                    System.out.println("\t1. Ver toda la lista \n\t2. Ver la lista ordenada por tipo");
                     int opShopList = sc.nextInt(); 
                     
                     switch(opShopList){
@@ -67,8 +75,7 @@ public class UI {
                     break; 
                 case 4: 
                     System.out.println("¿Cómo desea ver el inventario?");
-                    System.out.println("\t1. Ver todo el inventario");
-                    System.out.println("\t2. Ver el inventario ordenado por tipo");
+                    System.out.println("\t1. Ver todo el inventario \n\t2. Ver el inventario ordenado por tipo");
                     int opInventary = sc.nextInt(); 
                     switch(opInventary){
                         case 1: 
@@ -88,7 +95,7 @@ public class UI {
                     break; 
             }
             System.out.println("¿Desea seguir realizando acciones?");
-            System.out.println("1. Sí, 2. No");
+            System.out.println("\t1. Sí \n\t2. No");
             statusShop = sc.nextInt(); 
         } 
         System.out.println("¡Gracias por realizar compras!");
