@@ -9,7 +9,6 @@ import java.util.Map;
  * Propósito: Creacion de Factory para distintas implementaciones de Map
  */
 
-
 public class MapFactory {
 
     public Map getTypeMap(int userOp){

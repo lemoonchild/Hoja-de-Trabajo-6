@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.Map;
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 import Controller.readFile;
 import Controller.toDoShop;
 import Model.MapFactory;
@@ -22,6 +24,10 @@ public class UI {
     static MapFactory mapFactory = new MapFactory(); 
     static toDoShop toDo = new toDoShop();
     
+    /**
+     * Menu de compra de usuario además de seleccion de tipo de implementación de Map 
+     * @throws FileNotFoundException 
+     */
     public void menuCompra() throws FileNotFoundException{
 
         int statusShop = 1; 
@@ -36,11 +42,14 @@ public class UI {
 
         int type = sc.nextInt(); 
 
-        readFile.readShopList(mapFactory.getTypeMap(type), shopList);
+        Map<String,String> typeUserMap = mapFactory.getTypeMap(type); 
+        readFile.readShopList(typeUserMap, shopList);
         
         while(statusShop == 1){
 
-            System.out.println("¿Qué le gustaría realizar hoy?");
+            Scanner sc1 = new Scanner(System.in); 
+
+            System.out.println("\n¿Qué le gustaría realizar hoy?");
             System.out.println("\t1. Agregar producto");
             System.out.println("\t2. Buscar producto por categoría");
             System.out.println("\t3. Ver lista de compras");
@@ -51,9 +60,25 @@ public class UI {
             switch(op){
 
                 case 1: 
+                    
+                    String product, category; 
+
+                    System.out.println("\nEscriba el producto que quiere agregar: ");
+                    product = sc1.nextLine();
+
+                    System.out.println("Escriba la categoría del producto: ");
+                    category = sc1.nextLine(); 
+
+                    toDo.addProduct(typeUserMap, product, category);
 
                     break; 
                 case 2: 
+                    String productToKnow; 
+
+                    System.out.println("Escriba el producto para conocer su categoría: ");
+                    productToKnow = sc1.nextLine(); 
+                    
+                    toDo.searchProduct(typeUserMap, productToKnow);
 
                     break; 
                 case 3:
@@ -63,10 +88,10 @@ public class UI {
                     
                     switch(opShopList){
                         case 1: 
-
+                            toDo.showUserShopList();
                             break; 
                         case 2: 
-
+                            toDo.sortShopList();
                             break; 
                         default: 
                             System.out.println("¡Opción inválida!");
@@ -79,10 +104,10 @@ public class UI {
                     int opInventary = sc.nextInt(); 
                     switch(opInventary){
                         case 1: 
-
+                            toDo.showInventary();
                             break; 
                         case 2: 
-
+                            toDo.sortInventary();
                             break; 
                         default: 
                             System.out.println("¡Opción inválida!");

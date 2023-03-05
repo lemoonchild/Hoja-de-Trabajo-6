@@ -11,6 +11,11 @@ import java.io.FileNotFoundException;
 
 public class DriverProgram {
     
+    /**
+     * Main del programa 
+     * @param args
+     * @throws FileNotFoundException
+     */
     public static void main(String[] args) throws FileNotFoundException {
         
         UI userShop = new UI(); 
