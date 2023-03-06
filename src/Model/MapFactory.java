@@ -11,6 +11,11 @@ import java.util.Map;
 
 public class MapFactory {
 
+    /**
+     * Metodo que obtiene el tipo de mapa con el que desea trabajar el usuario 
+     * @param userOp Opcion del usuario 
+     * @return Mapa utilizado por el usuario 
+     */
     public Map getTypeMap(int userOp){
 
         Map typeMap = null;  

@@ -20,6 +20,13 @@ import java.util.Map.Entry;
 
 public class toDoShop {
 
+    /**
+     * Metodo para añadir producto al Map del usuario 
+     * @param addedProducts Map creado para los articulos del usuario 
+     * @param MapOfProducts Mapa con lista de articulos 
+     * @param product Nombre del producto a agregar 
+     * @param category Categoria del producto a agregar 
+     */
     public void  addProduct(Map<String,String> addedProducts, Map<String, String> MapOfProducts, String product, String category){
 
         String categoryOfProduct, productToAdd; 
@@ -44,6 +51,12 @@ public class toDoShop {
         }
 
     }
+
+    /**
+     * Metodo utilizado para buscar productos dentro del Map con lista de articulos 
+     * @param MapOfProducts Mapa con lista de articulos 
+     * @param product Producto al cual se le quiere conocer la categoria 
+     */
     public void searchProduct(Map<String, String> MapOfProducts, String product){
 
         String productToKnow = product.substring(0,1).toUpperCase() + product.substring(1); 
@@ -56,6 +69,11 @@ public class toDoShop {
         }
 
     }
+
+    /**
+     * Metodo que muestra todos los articulos ingresados por el usuario 
+     * @param userProductList Mapa con lista de articulos ingresados por el usuario 
+     */
     public void showUserShopList(Map<String,String> userProductList){
 
         System.out.println("\nProductos agregados por el usuario");
@@ -89,6 +107,11 @@ public class toDoShop {
 
 
     }   
+
+    /**
+     * Metodo que ordena por categoria la lista de articulos del usuario 
+     * @param userProductList Mapa con lista de articulos ingresados por el usuario  
+     */
     public void sortShopList(Map<String,String> userProductList){
         
         List<Map.Entry<String, String>> toSortProductList = new LinkedList<Map.Entry<String, String>>(userProductList.entrySet());
@@ -119,6 +142,11 @@ public class toDoShop {
         System.out.println("\n");
 
     } 
+
+    /**
+     * Metodo que muestra la lista de articulos total 
+     * @param mapInventary Lista de articulos 
+     */
     public void showInventary(Map<String, String> mapInventary){
 
         System.out.println("\nProductos del inventario: \n");
@@ -135,6 +163,11 @@ public class toDoShop {
         System.out.println("\n");
 
     }
+
+    /**
+     * Metodo que muestra la lista de articulos total 
+     * @param sortInventaryCollection Lista de articulos 
+     */
     public void sortInventary(Map<String, String> sortInventaryCollection){
 
         List<Map.Entry<String, String>> toSortProductList = new LinkedList<Map.Entry<String, String>>(sortInventaryCollection.entrySet());
