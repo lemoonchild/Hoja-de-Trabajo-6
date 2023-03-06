@@ -1,6 +1,15 @@
-package Controller;
 
+package Controller; 
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+
 
 /**
  * @author 
@@ -10,8 +19,8 @@ import java.util.Map;
  */
 
 public class toDoShop {
-    
-    public void addProduct(Map<String, String> MapOfProducts, String product, String category){
+
+    public void  addProduct(Map<String,String> addedProducts, Map<String, String> MapOfProducts, String product, String category){
 
         String categoryOfProduct, productToAdd; 
 
@@ -22,7 +31,8 @@ public class toDoShop {
 
             if(!MapOfProducts.containsKey(productToAdd)){
 
-                MapOfProducts.put(productToAdd, categoryOfProduct); 
+                addedProducts.put(productToAdd, categoryOfProduct); 
+
                 System.out.println("\t¡El producto ha sido añadido correctamente!\n");
 
             } else {
@@ -46,16 +56,108 @@ public class toDoShop {
         }
 
     }
-    public void showUserShopList(){
+    public void showUserShopList(Map<String,String> userProductList){
 
-    }
-    public void sortShopList(){
+        System.out.println("\nProductos agregados por el usuario");
+
+        for (String keys: userProductList.keySet()) {
+
+                String key = keys.toString();
+
+                String value = userProductList.get(keys).toString();
+                System.out.println("\tProducto: " + key + "       |       Categoría: " + value);
+
+        }
+
+        Map<String, Integer> collectionqty = new HashMap<>();
+
+        for (String value : userProductList.values()) {
+            if (collectionqty.containsKey(value)) {
+                collectionqty.put(value, collectionqty.get(value) + 1);
+            } else {
+                collectionqty.put(value, 1);
+            }
+        }
+
+        System.out.println("\nConteo de productos:");
+
+        for (Map.Entry<String, Integer> entry : collectionqty.entrySet()) {
+            
+            System.out.println("\t" + entry.getKey() + " : " + entry.getValue());
+        }
+        System.out.println("\n");
+
+
+    }   
+    public void sortShopList(Map<String,String> userProductList){
+        
+        List<Map.Entry<String, String>> toSortProductList = new LinkedList<Map.Entry<String, String>>(userProductList.entrySet());
+
+        Collections.sort(toSortProductList, new Comparator<Map.Entry<String, String>>() {
+
+            public int compare(Map.Entry<String, String> category1, Map.Entry<String, String> category2) {
+                return category1.getValue().compareTo(category2.getValue());
+
+            }
+        });
+        
+        Map<String, String> sortedMap = new LinkedHashMap<String, String>();
+        for (Map.Entry<String, String> sortedList : toSortProductList) {
+            sortedMap.put(sortedList.getKey(), sortedList.getValue());
+        }
+        
+        System.out.println("\nProductos agregados por usario ordenados por categoría: ");
+        for (Map.Entry<String, String> sortedList : sortedMap.entrySet()) {
+            System.out.println("\tCategoría: " + sortedList.getValue() + "     |       Producto: " + sortedList.getKey());
+        }
+
+        System.out.println("\nConteo de productos:");
+        for (Entry<String, String> entry : sortedMap.entrySet()) {
+            
+            System.out.println("\t" + entry.getKey() + " : " + entry.getValue());
+        }
+        System.out.println("\n");
 
     } 
-    public void showInventary(){
+    public void showInventary(Map<String, String> mapInventary){
+
+        System.out.println("\nProductos del inventario: \n");
+
+        for (String keys: mapInventary.keySet()) {
+
+                String key = keys.toString();
+
+                String value = mapInventary.get(keys).toString();
+                System.out.println("\tProducto: " + key + "   |   Categoría: " + value + "\n");
+
+        }
+
+        System.out.println("\n");
 
     }
-    public void sortInventary(){
+    public void sortInventary(Map<String, String> sortInventaryCollection){
 
+        List<Map.Entry<String, String>> toSortProductList = new LinkedList<Map.Entry<String, String>>(sortInventaryCollection.entrySet());
+
+        Collections.sort(toSortProductList, new Comparator<Map.Entry<String, String>>() {
+
+            public int compare(Map.Entry<String, String> category1, Map.Entry<String, String> category2) {
+                return category1.getValue().compareTo(category2.getValue());
+
+            }
+        });
+        
+        Map<String, String> sortedMap = new LinkedHashMap<String, String>();
+        for (Map.Entry<String, String> sortedList : toSortProductList) {
+            sortedMap.put(sortedList.getKey(), sortedList.getValue());
+        }
+        
+        System.out.println("\nProductos del inventario ordenados por categoría: \n");
+        for (Map.Entry<String, String> sortedList : sortedMap.entrySet()) {
+            System.out.println("\tCategoría: " + sortedList.getValue() + "  |   Producto: " + sortedList.getKey() + "\n");
+        }
+
+        System.out.println("\n");
     }
+
 }

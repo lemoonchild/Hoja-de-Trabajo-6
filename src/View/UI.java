@@ -4,8 +4,6 @@ import java.io.FileNotFoundException;
 import java.util.Map;
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
 import Controller.readFile;
 import Controller.toDoShop;
 import Model.MapFactory;
@@ -43,6 +41,7 @@ public class UI {
         int type = sc.nextInt(); 
 
         Map<String,String> typeUserMap = mapFactory.getTypeMap(type); 
+        Map<String,String> collectionUserMap = mapFactory.getTypeMap(type); 
         readFile.readShopList(typeUserMap, shopList);
         
         while(statusShop == 1){
@@ -69,7 +68,7 @@ public class UI {
                     System.out.println("Escriba la categoría del producto: ");
                     category = sc1.nextLine(); 
 
-                    toDo.addProduct(typeUserMap, product, category);
+                    toDo.addProduct(collectionUserMap, typeUserMap, product, category);
 
                     break; 
                 case 2: 
@@ -88,10 +87,10 @@ public class UI {
                     
                     switch(opShopList){
                         case 1: 
-                            toDo.showUserShopList();
+                            toDo.showUserShopList(collectionUserMap);
                             break; 
                         case 2: 
-                            toDo.sortShopList();
+                            toDo.sortShopList(collectionUserMap);
                             break; 
                         default: 
                             System.out.println("¡Opción inválida!");
@@ -104,10 +103,10 @@ public class UI {
                     int opInventary = sc.nextInt(); 
                     switch(opInventary){
                         case 1: 
-                            toDo.showInventary();
+                            toDo.showInventary(typeUserMap);
                             break; 
                         case 2: 
-                            toDo.sortInventary();
+                            toDo.sortInventary(typeUserMap);
                             break; 
                         default: 
                             System.out.println("¡Opción inválida!");
